@@ -11,13 +11,31 @@ It's like saying :::Oh don't use if/else statements, you should just go straight
 
 	args.state.box_size ||= [20, 700, 200]
 
-	args.state.text_box ||= textbox(args.state.text, *args.state.box_size, h=0, args.state.text_size, args.state.text_font)
+	args.state.text_box ||= textbox(args.state.text, *args.state.box_size, args.state.text_size, args.state.text_font)
 	args.state.text_height ||= get_height(args.state.text, args.state.text_size, args.state.text_font) * args.state.text_box.length
 	args.outputs.labels << args.state.text_box
 	args.outputs.borders << [*args.state.box_size, args.state.text_height].anchor_rect(0,1)
 end
 
-def textbox(string, x, y, w, h=0, size=0, font="default")
+=begin ## Textbox Method ##
+#
+# Requires, at minimum:
+# String  - a string to be processed, may contain linebreaks
+# x and y - x/y coordinate for the top left of the textbox
+# w       - the width, in pixels, of the intended textbox, used to calculate line splits
+# 
+# Accepts, optionally:
+# size    - the size, an integer for DR's outputs.label
+# font    - font, a string for DR's outputs.label
+#
+# Does not support (yet):
+# h       - the height of the textbox, in pixels, for automatic cutoff and scrolling textboxes
+#
+# Returns:
+# An array of arrays suitable for pushing to outputs.label
+=end
+
+def textbox(string, x, y, w, size=0, font="default")
 	text = string_to_lines(string, w, size, font)
 	height_offset = get_height(string, size, font)
 	text.map!.with_index do |line, idx|
