@@ -17,6 +17,14 @@ It's like saying :::Oh don't use if/else statements, you should just go straight
 	args.outputs.borders << [*args.state.box_size, args.state.text_height].anchor_rect(0,1)
 end
 
+def textbox(string, x, y, w, h=0, size=0, font="default")
+	text = string_to_lines(string, w, size, font)
+	height_offset = get_height(string, size, font)
+	text.map!.with_index do |line, idx|
+		[x, y - idx * height_offset, line, size, font]
+	end
+end
+
 def get_length(string, size=0, font="default")
 	$gtk.args.gtk.calcstringbox(string, size, font).x
 end
@@ -56,12 +64,4 @@ def list_to_lines(strings, box_x, size, font)
 	end
 	lines.push line.dup
 	lines
-end
-
-def textbox(string, x, y, w, h=0, size=0, font="default")
-	text = string_to_lines(string, w, size, font)
-	height_offset = get_height(string, size, font)
-	text.map!.with_index do |line, idx|
-		[x, y - idx * height_offset, line, size, font]
-	end
 end
