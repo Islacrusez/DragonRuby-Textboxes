@@ -25,7 +25,7 @@ x and y are the xy pixel coordinate of the top left corner of your textbox
 and w is the width, in pixels, of the textbox you wish to create.
 
 All supported:
-args.outputs.labels << textbox(\"Text\", x, y, w, size, font)
+# args.outputs.labels << textbox(\"Text\", x, y, w, size, font)
 In line with the .labels output and args.gtk.calcstringbox, textbox supports:
 size (as a positive or negative integer, with default 0)
 font (a string of the font name, default \"default\")
