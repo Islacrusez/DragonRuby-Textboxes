@@ -2,7 +2,7 @@ def tick args # example of use
 	args.state.text_size ||= -4			# change this and restart DR to change displayed and calculated text size
 	args.state.text_font ||= "default"	# change this and restart DR to change displayed and calculated text font
 
-	args.state.text ||= # change this text (internal " must be escaped \"), and restart DR to change displayed and calculated text
+	args.state.text ||=	# change this text (internal " must be escaped \"), and restart DR to change displayed and calculated text
 
 "In Unity, to render a collection of sprites that fly across the screen and wrap around, you need to know about C#, static constructors,  classes, inheritance, MonoBehavior life cycles, GameObject instantiation, adding components/scripts through the IDE, Vector3, Quaternion.identity, Camera.main, transform, Time.deltaTime, how to create a prefab, and how to associate a sprite to a prefab using the ide. This doesn't include putting the current framerate on the screen.
 	
@@ -43,18 +43,18 @@ def textbox(string, x, y, w, size=0, font="default")	# <==<<	# THIS METHOD TO BE
 	end
 end
 
-def get_length(string, size=0, font="default") # Internal method utilising calcstringbox to return string box length
+def get_length(string, size=0, font="default")	# Internal method utilising calcstringbox to return string box length
 	$gtk.args.gtk.calcstringbox(string, size, font).x
 end
 
-def get_height(string, size=0, font="default") # Internal method utilising calcstringbox to return string box height
+def get_height(string, size=0, font="default")	# Internal method utilising calcstringbox to return string box height
 	$gtk.args.gtk.calcstringbox(string, size, font).y
 end
 
 def string_to_lines(string, box_x, size, font)
 	return string unless get_length(string, size, font) > box_x
-	string.gsub!("\r", '')                                      # Removes carriage returns, leaving only line breaks
-	strings_with_linebreaks = string.split("\n")                # splits string into array at linebreak
+	string.gsub!("\r", '')										# Removes carriage returns, leaving only line breaks
+	strings_with_linebreaks = string.split("\n")				# splits string into array at linebreak
 	list_of_strings = strings_with_linebreaks.map do |line| 
 		next if line == ""										# Ignores blank strings, as caused by consecutive linebreaks
 		line.split												# Splits strings into arrays of words at any whitespace
