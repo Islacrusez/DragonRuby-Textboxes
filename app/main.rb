@@ -1,4 +1,4 @@
-def tick args
+def tick args # example of use
 	args.state.text_size ||= -4
 	args.state.text_font ||= "default"
 
@@ -35,11 +35,11 @@ end
 # An array of arrays suitable for pushing to outputs.label
 =end
 
-def textbox(string, x, y, w, size=0, font="default")
-	text = string_to_lines(string, w, size, font)
-	height_offset = get_height(string, size, font)
-	text.map!.with_index do |line, idx|
-		[x, y - idx * height_offset, line, size, font]
+def textbox(string, x, y, w, size=0, font="default")	# <==<<	# THIS METHOD TO BE USED
+	text = string_to_lines(string, w, size, font)				# Accepts string and returns array of strings of desired length
+	height_offset = get_height(string, size, font)				# Gets maximum height of any given line from the given string
+	text.map!.with_index do |line, idx|							# Converts array of string into array suitable for
+		[x, y - idx * height_offset, line, size, font]			# args.outputs.lables << textbox()
 	end
 end
 
