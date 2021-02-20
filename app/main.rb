@@ -2,12 +2,12 @@ def tick args # example of use
 	args.state.text_size ||= -4			# change this and restart DR to change displayed and calculated text size
 	args.state.text_font ||= "default"	# change this and restart DR to change displayed and calculated text font
 
-	args.state.text ||= # change this text (does not support " in input text), and restart DR to change displayed and calculated text
+	args.state.text ||= # change this text (internal " must be escaped \"), and restart DR to change displayed and calculated text
 
 "In Unity, to render a collection of sprites that fly across the screen and wrap around, you need to know about C#, static constructors,  classes, inheritance, MonoBehavior life cycles, GameObject instantiation, adding components/scripts through the IDE, Vector3, Quaternion.identity, Camera.main, transform, Time.deltaTime, how to create a prefab, and how to associate a sprite to a prefab using the ide. This doesn't include putting the current framerate on the screen.
 	
-The claim is :::this is how you should do it because it sets you up for success and a good architecture:::. Which isn't necessarily false, but I'm not ever going to get to that :::pit of success::: if I can't even get up and running.
-It's like saying :::Oh don't use if/else statements, you should just go straight to using the strategy pattern. Every time.::: When in reality, understanding the Strategy Pattern includes the progression to the :::perfect::: solution: if/else statements, multiple if/elsif statements, consolidation of logic so case statements can be used, generalization of case statement to a Hash of Procs, then maybe the full blown strategy pattern"
+The claim is \"this is how you should do it because it sets you up for success and a good architecture:::. Which isn't necessarily false, but I'm not ever going to get to that \"pit of success\" if I can't even get up and running.
+It's like saying \"Oh don't use if/else statements, you should just go straight to using the strategy pattern. Every time.\" When in reality, understanding the Strategy Pattern includes the progression to the \"perfect\" solution: if/else statements, multiple if/elsif statements, consolidation of logic so case statements can be used, generalization of case statement to a Hash of Procs, then maybe the full blown strategy pattern"
 
 	args.state.box_size ||= [20, 700, 200]	# change this and restart DR to change target textbox size and location
 
@@ -82,5 +82,5 @@ def list_to_lines(strings, box_x, size, font)
 		end
 	end															# Once all words in all strings are processed
 	lines.push line.dup											# Add accumulator to current line, as it's possible for accumulator to not have been committed
-	return lines														# Return array of lines, explicitly to be safe.
+	return lines												# Return array of lines, explicitly to be safe.
 end
