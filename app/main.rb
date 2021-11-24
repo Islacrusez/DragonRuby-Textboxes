@@ -60,6 +60,7 @@ end
 
 def textbox(string, x, y, w, size=0, font="default")    # <==<< # THIS METHOD TO BE USED
     text = string_to_lines(string, w, size, font)               # Accepts string and returns array of strings of desired length
+	return [x, y, text, size, font] if text.is_a?(String)		# Returns the string if it fits on a single line
     height_offset = get_height(string, size, font)              # Gets maximum height of any given line from the given string
     text.map!.with_index do |line, idx|                         # Converts array of string into array suitable for
         [x, y - idx * height_offset, line, size, font]          # args.outputs.lables << textbox()
