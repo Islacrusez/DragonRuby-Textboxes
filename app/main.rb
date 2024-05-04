@@ -96,7 +96,7 @@ def list_to_lines(strings, box_x, size, font)
         string << ""                                            # Adds a blank 'word' to the end of each outer array, to trigger newline code
         }.flatten!.pop                                          # Collapses nested arrays into one array, and removes the trailing blank 'word'
     strings.each do |word|
-        if word.empty? || !word                                 # Handling of blank 'words' and Nil entries in arrays 
+        if !word || word.empty?                                 # Handling of blank 'words' and Nil entries in arrays 
             lines.push line.dup unless line.empty?              # Adds existing accumulated words to the current line
             lines.push " " if line.empty?                       # Adds a space if no words accrued
             line.clear                                          # Clears the accumulator
